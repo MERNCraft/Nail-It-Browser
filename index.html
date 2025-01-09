@@ -10,16 +10,26 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div id="terminal">
-    <p>Let's knock a nail into this computer!</p>
-    <ul>
-      <li>Each player takes a turn to hit the nail once.</li>
-      <li>A player can use one of three levels of strength: gently, firmly, hard.</li>
-      <li>Depending on the strength used, the nail will be driven deeper or less deep into the Terminal.</li>
-      <li>The player who knocks the nail all the way in is the winner.</li>
-    </ul>
-    <p>Are you ready?</p>
-    <span>If you want to start, type Y. If you want me to start press any other key. [y/n]: </span><span class="cursor"></span>
-  </div>
+  <main>
+    <button type="button" id="restart">Retart Game</button>
+
+    <div id="terminal">
+      <div id="rules">
+        <p>Let's knock a nail into this computer!</p>
+        <ul>
+          <li>Each player takes a turn to hit the nail once.</li>
+          <li>A player can use one of three levels of strength: gently, firmly, hard.</li>
+          <li>Depending on the strength used, the nail will be driven deeper or less deep into the Terminal.</li>
+          <li>The player who knocks the nail all the way in is the winner.</li>
+        </ul>
+        <p>Are you ready?</p>
+        <p>If you want to start, type Y. If you want me to start press any other key. [y/n]: <span class="cursor"></span></p>
+      </div>
+    </div>
+
+    <div id="mask">
+      <button type="button" id="start">Start Game</button>
+    </div>
+  </main>
 </body>
 </html>

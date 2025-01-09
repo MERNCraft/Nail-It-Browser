@@ -10,8 +10,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --width: 500px;
-  --height: 500px;
+  --width: 550px;
+  --height: 420px;
   --gap: 8px;
   
   --light: #ddd;
@@ -32,15 +32,32 @@ body {
   font-family: 'Courier New', Courier, monospace
 }
 
-div {
+main {
+  position: relative;
   width: var(--width);
   height: var(--height);
+  font-weight: bold;
   border: 1px solid var(--light);
+  border-radius: var(--gap);
+  box-sizing: border-box;
+
+  p {
+    margin: 0.5em
+  }
+}
+
+div#mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #222c;
   border-radius: var(--gap);
 }
 
-p {
-  margin: 0.5em
+div.hidden {
+  display: none
 }
 
 span.cursor {
@@ -50,5 +67,39 @@ span.cursor {
   width: 0.5em;
   height: 1em;
   background-color: var(--light);
+}
+
+#readlineSim p {
+  margin: 0 0.5em;
+
+  &:first-child,
+  &:last-child {
+    margin-top: 1em;
+  }
+}
+
+button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 8em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  cursor: pointer;
+
+  color: inherit;
+
+  &#start {
+    background-color: #060;
+    border-color: #080;
+  }
+
+  &#restart {
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
