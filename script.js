@@ -81,12 +81,12 @@ function startGame(whoStarts) {
 function showNail() {
   if (!started) {
     // Draw the whole nail, including the tip
-    nail = "-" + "=".repeat(length - 2) + "<|"
+    nail = "-" + "=".repeat(length - 1) + "|"
 
   } else if (length > 0) {
     // There will be at least one unit showing, because the game
     // is not yet over
-    nail = "=".repeat(length - 1) + "<|"
+    nail = "=".repeat(length) + "|"
 
   } else {
     // Game over. Show just the head
@@ -94,6 +94,7 @@ function showNail() {
   }
 
   const p = document.createElement("p")
+  p.className = "nail"
   p.innerText = nail + prompt
   terminal.append(p)
 }
@@ -170,7 +171,8 @@ function strike() {
   started = true
   const pronoun = player ? "You" : "I"
 
-  prompt = " ".repeat(initial - length + force - 1)
+  const padding = Math.min(initial - length + force, initial) + 1
+  prompt = " ".repeat(padding)
          + pronoun + hit + strength[force - 1] + "."
   length -= force
 

@@ -69,6 +69,10 @@ span.cursor {
   background-color: var(--light);
 }
 
+p.nail {
+  white-space: pre;
+}
+
 #readlineSim p {
   margin: 0 0.5em;
 
