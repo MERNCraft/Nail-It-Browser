@@ -1,0 +1,54 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --width: 500px;
+  --height: 500px;
+  --gap: 8px;
+  
+  --light: #ddd;
+  --mid: #888;
+  --dark: #222;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--light);
+  background-color: var(--dark);
+  font-family: 'Courier New', Courier, monospace
+}
+
+div {
+  width: var(--width);
+  height: var(--height);
+  border: 1px solid var(--light);
+  border-radius: var(--gap);
+}
+
+p {
+  margin: 0.5em
+}
+
+span.cursor {
+  display:inline-block;
+  position: relative;
+  top: 0.125em;
+  width: 0.5em;
+  height: 1em;
+  background-color: var(--light);
+}
+
