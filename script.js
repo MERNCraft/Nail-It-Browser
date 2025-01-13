@@ -28,10 +28,14 @@ restart.addEventListener("click", restartGame)
 // Define strings
 const nailIs    = "The nail is "
 const long      = " units long."
-const replay    = "Do you want to play again? (Type Y for Yes)"
+const replay    = `
+Do you want to play again?
+(Type Y for Yes, N for No): `
 const yourTurn  = "Your turn. How hard do you plan to hit?"
 const strength  = [ "gently", "firmly", "hard" ]
 const hit       = " hit the nail "
+const players   = [ "I", "You" ]
+const win       = " win!"
 
 // Define the values that the AI will use to calculate its move
 const best     = 3
@@ -43,7 +47,7 @@ let force      = 0
 let prompt     // "The nail is X units long." | "Y hit the nail Z."
 let nail       // "-==========<|" ... "=====<|" ... "<|"
 let started    // falsy until first hit
-
+let pronoun    // one of `players`
 let player, nextPlayer, initial, length
 
 
@@ -71,7 +75,7 @@ function startGame(whoStarts) {
   initial = 12 + Math.floor(Math.random() * oneOver)
   length = initial
 
-  prompt = ` ${nailIs} ${length} ${long}`
+  prompt = ` ${nailIs}${length}${long}`
   started = false
 
   showNail()
@@ -169,7 +173,7 @@ function setForce(number) {
 
 function strike() {
   started = true
-  const pronoun = player ? "You" : "I"
+  pronoun = players[player + 0]
 
   const padding = Math.min(initial - length + force, initial) + 1
   prompt = " ".repeat(padding)
@@ -182,11 +186,11 @@ function strike() {
     hammer()
 
   } else {
-    gameOver(pronoun, prompt)
+    gameOver()
   }
 }
 
-function gameOver(pronoun) {
+function gameOver() {
   showNail() // fully driven in, with player's action as prompt
 
   // Pretend to use readline-sync to ask if player wants to
@@ -195,7 +199,7 @@ function gameOver(pronoun) {
   readlineSim.id = "readlineSim"
 
   const lines = [
-    `${pronoun} win!`,
+    `${pronoun} ${win}`,
     replay
   ]
 
@@ -215,13 +219,14 @@ function gameOver(pronoun) {
 }
 
 function replayIfRequested(key) {
-  if (key.toLowerCase() === "y") {
+  key = key.toLowerCase()
+  if (key === "y") {
     while (terminal.lastChild) {
       terminal.lastChild.remove()
     }
     startGame(nextPlayer)
 
-  } else {
+  } else if (key === "n") {
     restartGame()
   }
 }
